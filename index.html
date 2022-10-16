@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+
+    <title>Weather Forecast</title>
+</head>
+<body>
+    <header style="text-align: center;"> 
+     <div class="header-area align-text-center">
+        <h1>Weather Forecast</h1>
+     </div>
+    </header>
+
+    <main>
+        <div class="row">
+            <section id="searchArea" class="col-4 align-items-center">
+                    <div class="col-4 text-right" >
+                    
+                    <h3 class="selectCity">City Search</h3>
+                    
+                    </div>
+        
+
+                <form class="city text-right">
+            
+                
+                    <div class="form  ">
+                        
+                        <input type="text" id="citySearch" />
+                        <button type="button" id="searchButton" class="btn btn-primary btn-sm">Search</button>
+                    </div>
+
+                    <div id="sHistory" class=" align-items-center">
+                        <p> Your search History </p>
+                        <ul>
+                            <li>
+                                <input type="text" id="searchHistory" />
+                            </li>
+                            <li>
+                                <input type="text" id="searchHistory" />
+                            </li>
+                            <li>
+                                <input type="text" id="searchHistory" />
+                            </li>
+                        </ul>
+                        
+
+
+                    </div>
+                </form>
+            </section>
+
+
+            <section id="forecastArea" class="col-8 align-items-center">
+                        
+                        <div class="apiForecast ">
+
+                            <input type="city goes here" id="currentTemps" />
+                        </div>
+
+                        <div class="fiveDaysForecast ">
+                            <input type="five days go here" id="fiveDays" />
+                        </div>
+
+            </section>
+
+        </div>
+
+
+
+    </main>
+
+
+    
+</body>
+
+<script src="./assets/js/script.js"></script>
+
+
+</html>
