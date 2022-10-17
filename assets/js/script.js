@@ -14,7 +14,7 @@ var searchButton = document.getElementById('searchButton');
 
 function getApi(){
    var city = document.getElementById('citySearch');
-   var requestUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=79fcf7dc6a392bfb9db10a054d9e49c5'
+   var requestUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=79fcf7dc6a392bfb9db10a054d9e49c5`
 
 
     fetch(requestUrl)
