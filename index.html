@@ -6,13 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="./assets/css/style.css">
+
 
     <title>Weather Forecast</title>
 </head>
 <body>
-    <header style="text-align: center;"> 
-     <div class="header-area align-text-center">
+    <header id = header style="text-align: center;"> 
         <h1>Weather Forecast</h1>
+     <div class="header-area align-text-center">
+        
      </div>
     </header>
 
@@ -22,32 +25,17 @@
                     <div class="col-4 text-right" >
                     
                     <h3 class="selectCity">City Search</h3>
-                    
+                    <input type="text" id="citySearch" />
+                    <button type="button" id="searchButton" class="btn btn-primary btn-sm">Search</button>
                     </div>
         
 
-                <form class="city text-right">
-            
                 
-                    <div class="form  ">
-                        
-                        <input type="text" id="citySearch" />
-                     
-                        <button type="button" id="searchButton" class="btn btn-primary btn-sm">Search</button>
-                    </div>
 
                     <div id="sHistory" class=" align-items-center">
                         <p> Your search History </p>
-                        <ul>
-                            <li>
-                                <input type="text" id="searchHistory" />
-                            </li>
-                            <li>
-                                <input type="text" id="searchHistory" />
-                            </li>
-                            <li>
-                                <input type="text" id="searchHistory" />
-                            </li>
+                        <ul id="searchHistory">
+                            
                         </ul>
                         
 
@@ -57,18 +45,31 @@
             </section>
 
 
-            <section id="forecastArea" class="col-8 align-items-center">
+            <section id="currentForecast" class="col-8 align-items-center">
+
+                    <div class="row">
                         
-                        <div class="apiForecast ">
-
-                            <input type="city goes here" id="currentTemps" />
+                        <div id="currentTemps" class="col-8 align-items-center">
                         </div>
 
-                        <div class="fiveDaysForecast ">
-                            <input type="five days go here" id="fiveDays" />
-                        </div>
+                    </div>
+            </section>
+        </div>
+        
+        
+        <div class="row justify-content-end">
+            <section class="col-8 align-items-center"></section>
+
+                <div id="fiveDaysForecast ">
+                          
+                   <div id="fiveForecast" class="col-8 align-items-center"></div>
+
+                            
+                </div>
 
             </section>
+                    
+        
 
         </div>
 
@@ -79,7 +80,7 @@
 
     
 </body>
-
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="./assets/js/script.js"></script>
 
 

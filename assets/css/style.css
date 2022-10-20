@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+
+h1{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 65pt;
+    text-align: center;
+    background-color: #cae8f0;
+    color:#3b6ee4;
+
+}
+
+h3{
+    font-family: optima;
+    font-size: 3 pt;
+    text-align: left;
+    color:#3b6ee4;
+
+}
+
+
+
+#currentForecast{
+    border: 2px solid #7a7bca;
+    border-radius: 3px;
+    display: inline-flex;
+}
