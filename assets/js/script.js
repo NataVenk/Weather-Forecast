@@ -132,33 +132,33 @@ function getWeather5(location){
 
      
 
-function displayWeather5(data) {
+// function displayWeather5(data) {
 
-    var city = document.createElement("div")
-    city.textContent=data.name
+//     var city = document.createElement("div")
+//     city.textContent=data.name
     
 
   
 
-    var temp = document.createElement("div")
-    temp.textContent = "Temperature: " + data.main.temp;
+//     var temp = document.createElement("div")
+//     temp.textContent = "Temperature: " + data.main.temp;
 
-    var humid = document.createElement ("div")
-    humid.textContent = "Humidity" + data.main.humidity;
+//     var humid = document.createElement ("div")
+//     humid.textContent = "Humidity" + data.main.humidity;
     
-    var rain = document.createElement("div")
-    rain.textContent = data.weather[0].main
+//     var rain = document.createElement("div")
+//     rain.textContent = data.weather[0].main
    
-console.log(temp)
+// console.log(temp)
 
-    futureForecast.appendChild(city)
-    futureForecast.appendChild(temp)
-    futureForecast.appendChild(humid)
-    futureForecast.appendChild(rain)
+//     futureForecast.appendChild(city)
+//     futureForecast.appendChild(temp)
+//     futureForecast.appendChild(humid)
+//     futureForecast.appendChild(rain)
     
 
 
-}
+// }
 
 
 
