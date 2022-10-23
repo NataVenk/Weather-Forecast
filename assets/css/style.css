@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
     padding: 0;
-    margin: 0;
+    margin: 0px;
 }
 
 
@@ -24,9 +24,21 @@ h3{
 
 }
 
-
+#currentTemps {
+    font-family: optima;
+    font-size: 3 pt;
+    text-align: left;
+    color:#3b6ee4;
+}
 
 #currentForecast{
+    border: 2px solid #7a7bca;
+    border-radius: 3px;
+    /* display: inline-flex; */
+    /* margin-left: 2px; */
+}
+
+.fiveForecast{
     border: 2px solid #7a7bca;
     border-radius: 3px;
     display: inline-flex;
