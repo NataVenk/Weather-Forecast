@@ -5,7 +5,7 @@ var searchButton = document.getElementById('searchButton')
 
 var currentForecast = document.getElementById("currentTemps")
 
-var futureForecast = document.getElementById("fiveForecast")
+var futureForecast = document.getElementById("fiveDay")
 
 var curD = document.getElementById("curD")
 
@@ -51,7 +51,7 @@ function getApi() {
             saveTols(newCity)
             getWeather1(newCity);
             getWeather5(newCity);
-           
+
 
 
 
@@ -75,7 +75,7 @@ function getWeather1(location) {
         })
         .then(function (data) {
             console.log(data);
-        
+
             displayWeather(data)
 
         },)
@@ -86,22 +86,35 @@ function getWeather1(location) {
 
 function displayWeather(data) {
 
+    var forecastIcon = document.createElement("img");
+    forecastIcon.setAttribute(
+        "src",
+        "https://openweathermap.org/img/wn/" +
+        data.weather[0].icon
+    );
+    forecastIcon.setAttribute(
+        "alt",
+        data.weather[0].description
+    );
+
+
 
     var city = document.createElement("div")
     city.textContent = data.name
     city.setAttribute("style", "font-size: 25px; font-weight: bold; text-decoration:underline; ");
-  
+
     var currentD = moment();
     curD.textContent = (currentD.format("MMM Do, YYYY"));
 
- 
+
 
     var temp = document.createElement("div")
     temp.textContent = "Temperature: " + data.main.temp + " F";
 
+
     var humid = document.createElement("div")
     humid.textContent = "Humidity: " + data.main.humidity + " %";
-    humid.setAttribute("style", "font-size: 15px; ");
+    // humid.setAttribute("style", "font-size: 15px; ");
     var rain = document.createElement("div")
     rain.textContent = "Sky: " + data.weather[0].main;
 
@@ -109,8 +122,12 @@ function displayWeather(data) {
     wind.textContent = "Wind: " + data.wind.speed + " MPH";
 
 
+
+
+
     currentForecast.appendChild(curD)
     currentForecast.appendChild(city)
+    currentForecast.appendChild(forecastIcon)
     currentForecast.appendChild(temp)
     currentForecast.appendChild(humid)
     currentForecast.appendChild(rain)
@@ -126,7 +143,7 @@ function displayWeather(data) {
 function getWeather5(location) {
     var lat = location.lat;
     var lon = location.lon;
-    var requestUrl5 = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=79fcf7dc6a392bfb9db10a054d9e49c5`
+    var requestUrl5 = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=79fcf7dc6a392bfb9db10a054d9e49c5`
 
     console.log(requestUrl5)
 
@@ -135,20 +152,77 @@ function getWeather5(location) {
             return response.json();
         })
         .then(function (data) {
-            for (var i = 0; i <= 4; i++) {
-                // var temp = document.createElement("div")
-                // temp.textContent =  data[i].list[3].main.temp ;
-
+            for (var i = 0; i < data.list[i].length; i=i+8){
                 console.log(data)
+
+                
+
+
             }
+            displayWeather5(data)
+
 
         },)
-
 }
 
 
 
-// function displayWeather5(data) {
+
+
+// let cardsGroupFlex = document.getElementById(fiveDay)
+
+function displayWeather5(data) {
+
+
+    // var temp = data.list[i].main.temp;
+    // console.log(temp)
+
+    // var humid = data.list[i].main.humidity;
+    // console.log(humid)
+    // var wind = data.list[i].wind.speed
+    // console.log(wind)
+
+
+
+    var temp = document.createElement("div")
+    temp.textContent = data.list[i].main.temp;
+    
+
+    var humid = document.createElement("div")
+    humid.textContent = data.list[i].main.humidity;
+
+    var rain = document.createElement("div")
+    rain.textContent = data.list[i].weather[0].temp;
+
+    var wind = document.createElement("div")
+    wind.textContent = data.list[i].wind.speed;
+
+    console.log(temp)
+    console.log(humid)
+    console.log(rain)
+    console.log(wind)
+
+    futureForecast.appendChild(temp)
+    futureForecast.appendChild(humid)
+    futureForecast.appendChild(rain)
+    futureForecast.appendChild(wind)
+
+
+
+
+}
+
+
+//     futureForecast.appendChild(temp)
+
+
+// var futDate = (data.list[i].dt * 1000);
+// console.log(futDate)
+
+// console.log(data)
+
+// var date = $("<h2>").text(moment.unix(data.list[i].dt).format("L"))
+// console.log(date)
 
 //     // add date
 
@@ -169,6 +243,14 @@ function getWeather5(location) {
 //     futureForecast.appendChild(temp)
 //     futureForecast.appendChild(humid)
 //     futureForecast.appendChild(rain)
+ //     cardsGroupFlex.innerHTML +=
+    //         <div class="card">
+    //             <p></p>
+    //         </div>
+    // }
+    // let detailArray = {
+    //     temp: "Temperature" 
+
 
 
 
