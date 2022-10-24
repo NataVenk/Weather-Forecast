@@ -115,8 +115,8 @@ function displayWeather(data) {
     var humid = document.createElement("div")
     humid.textContent = "Humidity: " + data.main.humidity + " %";
     // humid.setAttribute("style", "font-size: 15px; ");
-    var rain = document.createElement("div")
-    rain.textContent = "Sky: " + data.weather[0].main;
+    // var rain = document.createElement("div")
+    // rain.textContent = "Sky: " + data.weather[0].main;
 
     var wind = document.createElement("div")
     wind.textContent = "Wind: " + data.wind.speed + " MPH";
@@ -130,7 +130,7 @@ function displayWeather(data) {
     currentForecast.appendChild(forecastIcon)
     currentForecast.appendChild(temp)
     currentForecast.appendChild(humid)
-    currentForecast.appendChild(rain)
+   
     currentForecast.appendChild(wind)
 
 
@@ -152,10 +152,25 @@ function getWeather5(location) {
             return response.json();
         })
         .then(function (data) {
-            for (var i = 0; i < data.list[i].length; i=i+8){
+            for (var i = 0; i < data.list.length; i = i + 8) {
                 console.log(data)
 
-                
+                var temp = document.createElement("div")
+                temp.textContent = data.list[i].main.temp;
+                var humid = document.createElement("div")
+                humid.textContent = data.list[i].main.humidity;
+                var rain = document.createElement("div")
+                rain.textContent = data.list[i].weather[0].temp;
+
+                var wind = document.createElement("div")
+                wind.textContent = data.list[i].wind.speed;
+
+
+
+                console.log(temp)
+                console.log(humid)
+                console.log(rain)
+                console.log(wind)
 
 
             }
@@ -172,40 +187,17 @@ function getWeather5(location) {
 // let cardsGroupFlex = document.getElementById(fiveDay)
 
 function displayWeather5(data) {
-
-
-    // var temp = data.list[i].main.temp;
-    // console.log(temp)
-
-    // var humid = data.list[i].main.humidity;
-    // console.log(humid)
-    // var wind = data.list[i].wind.speed
-    // console.log(wind)
+    var fiveDay = document.getElementsByClassName("fiveDay");
+    fiveDay.setAttribute("card"
+       
+    );
 
 
 
-    var temp = document.createElement("div")
-    temp.textContent = data.list[i].main.temp;
-    
-
-    var humid = document.createElement("div")
-    humid.textContent = data.list[i].main.humidity;
-
-    var rain = document.createElement("div")
-    rain.textContent = data.list[i].weather[0].temp;
-
-    var wind = document.createElement("div")
-    wind.textContent = data.list[i].wind.speed;
-
-    console.log(temp)
-    console.log(humid)
-    console.log(rain)
-    console.log(wind)
-
-    futureForecast.appendChild(temp)
-    futureForecast.appendChild(humid)
-    futureForecast.appendChild(rain)
-    futureForecast.appendChild(wind)
+    // futureForecast.appendChild(temp)
+    // futureForecast.appendChild(humid)
+    // futureForecast.appendChild(rain)
+    // futureForecast.appendChild(wind)
 
 
 
@@ -243,13 +235,13 @@ function displayWeather5(data) {
 //     futureForecast.appendChild(temp)
 //     futureForecast.appendChild(humid)
 //     futureForecast.appendChild(rain)
- //     cardsGroupFlex.innerHTML +=
-    //         <div class="card">
-    //             <p></p>
-    //         </div>
-    // }
-    // let detailArray = {
-    //     temp: "Temperature" 
+//     cardsGroupFlex.innerHTML +=
+//         <div class="card">
+//             <p></p>
+//         </div>
+// }
+// let detailArray = {
+//     temp: "Temperature" 
 
 
 
