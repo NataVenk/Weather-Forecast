@@ -111,8 +111,8 @@ function displayWeather(data) {
     var forecastIcon = document.createElement("img");
     forecastIcon.setAttribute(
         "src",
-        "https://openweathermap.org/img/wn/" +
-        data.weather[0].icon
+        "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png" 
+
     );
     forecastIcon.setAttribute(
         "alt",
@@ -200,8 +200,9 @@ function displayWeather5(data) {
     var forecastIcon = document.createElement("img");
     forecastIcon.setAttribute(
         "src",
-        "https://openweathermap.org/img/wn/" +
-        data.list[i].weather[0].icon
+        "https://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png" 
+
+    
     );
     forecastIcon.setAttribute(
         "alt",
