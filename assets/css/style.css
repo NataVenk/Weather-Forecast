@@ -32,6 +32,28 @@ h4{
     color:white;
 
 }
+#p5 {
+    font-family: optima;
+    font-size: 15 pt;
+    text-align: center;
+    color:#3b6ee4;
+    text-decoration: underline;
+
+}
+#dayByday{
+    font-family: optima;
+    font-size: 15 pt;
+    text-align: center;
+    color:#3b6ee4;
+
+}
+
+#searchArea{
+    margin-left: 5px;
+}
+#spacer{
+    margin-left: 5px;
+}
 #currentTemps {
     font-family: optima;
     font-size: 3 pt;
@@ -49,22 +71,28 @@ h4{
 
 #fiveDay{
     background-color: #3b6ee4;
+    border-radius: 10px;
+    background-image: linear-gradient(white, #cae8f0);
+   
     
 }
 
 
 .fiveForecast{
-    background-color: #3b6ee4;
+    /* background-color: #3b6ee4; */
     display: inline-flex;
-    border-radius: 10px;
-    /* border-radius: 5px; */
-    background-image: linear-gradient(white, #cae8f0);
-
+    /* border-radius: 10px; */
+   
+    /* margin: 0px;
+    background-image: linear-gradient(white, #cae8f0); */
+    /* display: inline-space-between; */
 }
 
 .forecast-day{
-    border-top: 2px solid #7a7bca;
-    border-right: 2px solid #7a7bca;
+    border: 2px solid #7a7bca;
+    /* border-right: 2px solid #7a7bca; */
+    border-radius: 10px;
+    background-image: linear-gradient(white, #cae8f0);
 
     margin: 0px
 }

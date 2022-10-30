@@ -9,6 +9,8 @@ var futureForecast = document.getElementById("dayByday")
 
 var curD = document.getElementById("curD")
 
+var futD = document.getElementById("futD")
+
 var clearButton = document.getElementById("clearHistory");
 
 
@@ -25,10 +27,11 @@ function getPriorHistory() {
     var prevCity = JSON.parse(localStorage.getItem("history")) || []
    for (i = 0; i < 10; i++) {
         createPriorCity(prevCity[i])
-    }
-    // for (i > 5; i++ ) {
+    }  
+    // if i > 5 {
     //         localStorage.removeItem(prevCity[i])
     //   }
+  
     
       
   
@@ -205,19 +208,27 @@ function displayWeather5(data) {
         data.list[i].weather[0].description
     );
 
-  
-    var currentD = moment();
-    curD.textContent = (currentD.format("MMM Do, YYYY"));
+   
+    var nextD = moment().add(1, "days")
+    futD.textContent = (nextD.format("MMM Do, YYYY"));
+    // var currentD = moment();
+    // curD.textContent = (currentD.format("MMM Do, YYYY"));
 
-    
+    // var todayDate = moment().format("MMM Do, YYYY"); 
+    // var nextDay = moment(currentDay2).add(1, "days").format("MMM Do, YYYY");
+
+  
+
+  
 
     var temp = document.createElement("div");
-
     temp.textContent = "Temp: " + data.list[i].main.temp +" F";
+    temp.setAttribute("style", "font-size: 15px; ");
 
     var humid = document.createElement("div");
    
     humid.textContent = "Humidity: "+ data.list[i].main.humidity + " %";
+    humid.setAttribute("style", "font-size: 15px; ");
 
   
 
@@ -227,12 +238,13 @@ function displayWeather5(data) {
 
     console.log(temp);
     console.log(humid);
-    // console.log(rain);
     console.log(wind);
 
     var daySection = document.createElement("div");
     daySection.className = "row justify-content-end forecast-day";
-    // daySection.appendChild(curD)
+
+    daySection.appendChild(futD);
+    
     daySection.appendChild(forecastIcon);
     daySection.appendChild(temp);
     daySection.appendChild(humid);

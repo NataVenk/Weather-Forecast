@@ -28,12 +28,13 @@
 
     <main>
         <div class="row">
-            <section id="searchArea" class="col-4 align-items-center">
+            <section id="searchArea" class="col-md-4 align-items-center">
                 <div>
 
                     <h3 class="selectCity">City Search</h3>
                     <input type="text" id="citySearch" />
                     <button type="button" id="searchButton" class="btn btn-primary btn-sm">Search</button>
+                    <button type="button" id="clearHSearch" class="btn btn-primary btn-sm">Clear Search</button>
                 </div>
 
 
@@ -42,10 +43,13 @@
                 <div id="sHistory" class="align-items-center">
                     <p> Your search History </p>
                     <ul id="searchHistory">
-                        <form id="history"></form>
-                        <button type="button" id="clearHistory">Clear history</button>
+                        <div>
+                          <button type="button" id="history"></button>
+                        </div>
+                        
 
                     </ul>
+                    <button type="button" id="clearHistory" class="btn btn-primary btn-sm">Clear history</button>
 
 
 
@@ -60,7 +64,7 @@
             
 
 
-            <section id="currentForecast" class="col-8 align-items-center">
+            <section id="currentForecast" class="col-6 align-items-center">
                 <h4> Today's Forecast</h4>
 
                 <!-- <div class="row"> -->
@@ -75,13 +79,14 @@
 
         
     <div class="row">
-        <section id="spacer" class="col-4 align-items-center"></section>
+        <section id="spacer" class="col-md-4 align-items-center"></section>
         
 
         <!-- <section  class="col-8 align-items-center"> -->
-            <div id="fiveDay" class="col-8 align-items-center">
-                <h4> Five Day Forecast</h4>
+            <div id="fiveDay" class="col-6 align-items-center">
+                <p id="p5"> Five Day Forecast</p>
                 <div >
+                    <div id="futD"> </div>
                     <div id="dayByday" class="col fiveForecast">
                         
                     </div>
