@@ -9,8 +9,8 @@ var futureForecast = document.getElementById("dayByday")
 
 var curD = document.getElementById("curD")
 
-var futD = document.getElementById("futD")
-var futD2 = document.getElementById("futD2")
+// var cityEl = document.createElement("button")
+
 
 var clearButton = document.getElementById("clearHistory");
 
@@ -36,23 +36,26 @@ function getPriorHistory() {
     //   getWeather(searchHistory[searchHistory.length - 1]);
     // }
 }
-// create city name 
-function createPriorCity(city) {
-    var cityEl = document.createElement("li")
-    cityEl.textContent = city.name
-    // eElement.insertBefore(newFirstElement, eElement.firstChild);
-    searchHistory.insertBefore(cityEl, searchHistory.firstChild);
-}
+// // create city name 
+// function createPriorCity(city) {
+//     var cityEl = document.createElement("button")
+//     cityEl.className += 'btn btn-outline-secondary';
+//     cityEl.textContent = city.name
+//     // eElement.insertBefore(newFirstElement, eElement.firstChild);
+//     searchHistory.insertBefore(cityEl, searchHistory.firstChild);
+//     cityEl.addEventListener('click', getApi);
+
+// }
 
 
 
-function clearHistory() {
-    localStorage.removeItem("searchHistory");
-    localStorage.clear;
-    console.log ("i am clearing");
-    // searchHistory.removeItem("button")
-    // return '';
-  };
+// function clearHistory() {
+//     localStorage.removeItem("searchHistory");
+//     localStorage.clear;
+//     console.log ("i am clearing");
+//     // searchHistory.removeItem("button")
+//     // return '';
+//   };
 
 
 function getApi() {
@@ -222,16 +225,16 @@ function displayWeather5(data) {
   
 
     var temp = document.createElement("div");
-    temp.textContent = "Temp: " + data.list[i].main.temp +" F";
+    temp.textContent = "Temperature: " + data.list[i].main.temp +" F";
     temp.setAttribute("style", "font-size: 15px; ");
 
     var humid = document.createElement("div");
    
-    humid.textContent = "Humidity: "+ data.list[i].main.humidity + " %";
+    humid.textContent = "Humidity:     "+ data.list[i].main.humidity + " %";
     humid.setAttribute("style", "font-size: 15px; ");
 
     var wind = document.createElement("div");
-    wind.textContent = "Wind: "+ data.list[i].wind.speed + " MPH";
+    wind.textContent = "Wind:      "+ data.list[i].wind.speed + " MPH";
 
     
     var daySection = document.createElement("div");
@@ -260,8 +263,32 @@ function displayWeather5(data) {
 //     futureForecast =[]
 // }
 
+
 searchButton.addEventListener('click', getApi);
 getPriorHistory()
+
+// create city name 
+function createPriorCity(city) {
+    var cityEl = document.createElement("button")
+    cityEl.className += 'btn btn-outline-secondary';
+    cityEl.textContent = city.name
+    // eElement.insertBefore(newFirstElement, eElement.firstChild);
+    searchHistory.insertBefore(cityEl, searchHistory.firstChild);
+    cityEl.addEventListener('click', getApi);
+
+}
+
+
+
+function clearHistory() {
+    localStorage.removeItem("searchHistory");
+    localStorage.clear;
+    console.log ("i am clearing");
+    // searchHistory.removeItem("button")
+    // return '';
+  };
+
+// cityEl.addEventListener('click', getApi);
 
 clearButton.addEventListener('click', clearHistory);
 
