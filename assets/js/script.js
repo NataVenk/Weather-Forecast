@@ -10,11 +10,12 @@ var futureForecast = document.getElementById("dayByday")
 var curD = document.getElementById("curD")
 
 var futD = document.getElementById("futD")
+var futD2 = document.getElementById("futD2")
 
 var clearButton = document.getElementById("clearHistory");
 
 
-
+// save to the list in local storage
 function saveTols(city) {
     console.log(city)
     var prevCity = JSON.parse(localStorage.getItem("history")) || []
@@ -25,22 +26,17 @@ function saveTols(city) {
 function getPriorHistory() {
 
     var prevCity = JSON.parse(localStorage.getItem("history")) || []
-   for (i = 0; i < 10; i++) {
+   for (i = 0; i < 5; i++) {
         createPriorCity(prevCity[i])
     }  
-    // if i > 5 {
-    //         localStorage.removeItem(prevCity[i])
-    //   }
   
-    
-      
   
     // renderSearchHistory();
     // if (searchHistory.length > 0) {
     //   getWeather(searchHistory[searchHistory.length - 1]);
     // }
 }
-
+// create city name 
 function createPriorCity(city) {
     var cityEl = document.createElement("li")
     cityEl.textContent = city.name
@@ -50,10 +46,13 @@ function createPriorCity(city) {
 
 
 
-// function clearCity() {
-//     localStorage.removeItem("history");
-//     return '';
-//   };
+function clearHistory() {
+    localStorage.removeItem("searchHistory");
+    localStorage.clear;
+    console.log ("i am clearing");
+    // searchHistory.removeItem("button")
+    // return '';
+  };
 
 
 function getApi() {
@@ -81,7 +80,7 @@ function getApi() {
 
 
 }
-// localStorage.setItem("history", city)
+
 // getting current forecast
 
 
@@ -187,15 +186,26 @@ function getWeather5(location) {
 
 
 
+// var nextD = moment().add(1, "days")
+// futD.textContent = (nextD.format("MMM Do, YYYY"));
+
+// var nextD2 = moment().add(2, "days")
+// futD2.textContent = (nextD2.format("MMM Do, YYYY"));
+
+// daySection.appendChild(futD);
+// daySection.appendChild(futD2);
 
 
 
 function displayWeather5(data) {
 
-  
-
 
   for (var i = 0; i < data.list.length; i = i + 8) {
+//     var nextD = moment().add(1, "days")
+// futD.textContent = (nextD.format("MMM Do, YYYY"));
+
+    var date = document.createElement("div");
+    date.textContent = moment.unix( data.list[i].dt).format("LL");
 
     var forecastIcon = document.createElement("img");
     forecastIcon.setAttribute(
@@ -209,17 +219,6 @@ function displayWeather5(data) {
         data.list[i].weather[0].description
     );
 
-   
-    var nextD = moment().add(1, "days")
-    futD.textContent = (nextD.format("MMM Do, YYYY"));
-    // var currentD = moment();
-    // curD.textContent = (currentD.format("MMM Do, YYYY"));
-
-    // var todayDate = moment().format("MMM Do, YYYY"); 
-    // var nextDay = moment(currentDay2).add(1, "days").format("MMM Do, YYYY");
-
-  
-
   
 
     var temp = document.createElement("div");
@@ -231,20 +230,15 @@ function displayWeather5(data) {
     humid.textContent = "Humidity: "+ data.list[i].main.humidity + " %";
     humid.setAttribute("style", "font-size: 15px; ");
 
-  
-
     var wind = document.createElement("div");
-    
     wind.textContent = "Wind: "+ data.list[i].wind.speed + " MPH";
 
-    console.log(temp);
-    console.log(humid);
-    console.log(wind);
-
+    
     var daySection = document.createElement("div");
     daySection.className = "row justify-content-end forecast-day";
 
-    daySection.appendChild(futD);
+    daySection.appendChild(date);
+    // daySection.appendChild(futD2);
     
     daySection.appendChild(forecastIcon);
     daySection.appendChild(temp);
@@ -267,8 +261,10 @@ function displayWeather5(data) {
 // }
 
 searchButton.addEventListener('click', getApi);
-
 getPriorHistory()
+
+clearButton.addEventListener('click', clearHistory);
+
 
 
 // clearButton.addEventListener("click", clearCity);
