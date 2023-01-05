@@ -26,41 +26,54 @@ function saveTols(city) {
 function getPriorHistory() {
 
     var prevCity = JSON.parse(localStorage.getItem("history")) || []
-   for (i = 0; i < 5; i++) {
+   for (i = 0; i < prevCity.length; i++) {
         createPriorCity(prevCity[i])
-    }  
-  
-  
-    // renderSearchHistory();
-    // if (searchHistory.length > 0) {
-    //   getWeather(searchHistory[searchHistory.length - 1]);
-    // }
+    } 
+    
 }
-// // create city name 
-// function createPriorCity(city) {
-//     var cityEl = document.createElement("button")
-//     cityEl.className += 'btn btn-outline-secondary';
-//     cityEl.textContent = city.name
-//     // eElement.insertBefore(newFirstElement, eElement.firstChild);
-//     searchHistory.insertBefore(cityEl, searchHistory.firstChild);
-//     cityEl.addEventListener('click', getApi);
+  
 
-// }
+function createPriorCity(city) {
+    console.log (city)
+    var cityEl = document.createElement("button")
+    cityEl.className += 'btn btn-outline-secondary';
+    cityEl.textContent = city.name
+    cityEl.dataset.lat = city.lat
+    cityEl.dataset.lon = city.lon
+    searchHistory.insertBefore(cityEl, searchHistory.firstChild);
+   cityEl.addEventListener('click', getNewData);
+    // cityEl.addEventListener('click', getApi(city.name));
+
+}
+
+function getNewData(e){
+    console.log (e.target)
+    const city={
+        name:e.target.textContent, 
+        lat:e.target.dataset.lat,
+        lon:e.target.dataset.lon,
+    }
+    getWeather1(city);
+    getWeather5(city);
+}
+
+
+function clearHistory(){
+    localStorage.clear();
+    searchHistory.innerHTML=""
+    
+}
 
 
 
-// function clearHistory() {
-//     localStorage.removeItem("searchHistory");
-//     localStorage.clear;
-//     console.log ("i am clearing");
-//     // searchHistory.removeItem("button")
-//     // return '';
-//   };
+
 
 
 function getApi() {
-    var city = document.getElementById('citySearch').value;
 
+     var  city = document.getElementById('citySearch').value;
+//     // }
+// console.log (nCity)
     var requestUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city},US&limit=10&appid=79fcf7dc6a392bfb9db10a054d9e49c5`
 
 
@@ -109,6 +122,7 @@ function getWeather1(location) {
 
 
 function displayWeather(data) {
+    currentForecast.innerHTML = ""
 
     var forecastIcon = document.createElement("img");
     forecastIcon.setAttribute(
@@ -189,23 +203,16 @@ function getWeather5(location) {
 
 
 
-// var nextD = moment().add(1, "days")
-// futD.textContent = (nextD.format("MMM Do, YYYY"));
 
-// var nextD2 = moment().add(2, "days")
-// futD2.textContent = (nextD2.format("MMM Do, YYYY"));
-
-// daySection.appendChild(futD);
-// daySection.appendChild(futD2);
 
 
 
 function displayWeather5(data) {
 
+    futureForecast.innerHTML = ""
+
 
   for (var i = 0; i < data.list.length; i = i + 8) {
-//     var nextD = moment().add(1, "days")
-// futD.textContent = (nextD.format("MMM Do, YYYY"));
 
     var date = document.createElement("div");
     date.textContent = moment.unix( data.list[i].dt).format("LL");
@@ -241,7 +248,7 @@ function displayWeather5(data) {
     daySection.className = "row justify-content-end forecast-day";
 
     daySection.appendChild(date);
-    // daySection.appendChild(futD2);
+  
     
     daySection.appendChild(forecastIcon);
     daySection.appendChild(temp);
@@ -249,7 +256,6 @@ function displayWeather5(data) {
   
     daySection.appendChild(wind);
 
-    // Adding daySection to Main section
     futureForecast.appendChild(daySection);
   }
     
@@ -258,42 +264,20 @@ function displayWeather5(data) {
 }
 
 
-// function clearWeather() {
-//     currentForecast =[]
-//     futureForecast =[]
-// }
-
+function searchPrevCity(){
+    console.log("searchNcity")
+}
 
 searchButton.addEventListener('click', getApi);
 getPriorHistory()
 
-// create city name 
-function createPriorCity(city) {
-    var cityEl = document.createElement("button")
-    cityEl.className += 'btn btn-outline-secondary';
-    cityEl.textContent = city.name
-    // eElement.insertBefore(newFirstElement, eElement.firstChild);
-    searchHistory.insertBefore(cityEl, searchHistory.firstChild);
-    cityEl.addEventListener('click', getApi);
-
-}
+searchHistory.addEventListener('click', searchPrevCity)
 
 
-
-function clearHistory() {
-    localStorage.removeItem("searchHistory");
-    localStorage.clear;
-    console.log ("i am clearing");
-    // searchHistory.removeItem("button")
-    // return '';
-  };
-
-// cityEl.addEventListener('click', getApi);
 
 clearButton.addEventListener('click', clearHistory);
 
 
 
-// clearButton.addEventListener("click", clearCity);
 
 
