@@ -20,7 +20,7 @@ City is stored in search history and once clicked , brings up the daily forecast
 
 image of the working page
 
-   <img scr = "./assets/images/" />
+   <img src = "./assets/images/weather.png" />
 
 
 ## Credits
